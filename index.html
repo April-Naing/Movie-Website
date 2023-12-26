@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies Website</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Rubik+Broken+Fax&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">GetFlix</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link pointer" aria-current="page" onclick="getMovies()">Movie</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" onclick="getTVseries()">TV Shows</a>
+          </li>
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li> -->
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="search" class=" form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit" onclick="searchMovies()">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div id="main" class="">
+    <section id="content" class="bg-opacity-25">
+      <h1 class="text-white px-5 pt-5">Welcome.</h1>
+      <h3 class="text-white px-5">Millions of movies , tv shows to discover.Explore now.</h3>
+      <div class="input-group px-5 pt-3 main-search">
+        <input id="search2" type="text" class="form-control rounded-start-pill"
+          placeholder="Search movies , tv shows ..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <span class="input-group-text rounded-end-pill pointer" id="basic-addon2" onclick="searchMovies()">Search</span>
+      </div>
+    </section>
+
+    <!--trending caurosel start-->
+    <div id="trending">
+      <div class="switch justify-content-between align-items-center">
+        <h1 class="ms-3">Trending</h1>
+        <div class="form-box ">
+          <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="leftClick()">Today</button>
+            <button type="button" class="toggle-btn" onclick="rightClick()">This week</button>
+          </div>
+        </div>
+      </div>
+      <div id="carouselExample" class="carousel">
+        <div id="trendingCarouselCard" class="carousel-inner">
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!--trending caurosel end-->
+
+    <!--popular carousel start-->
+    <div id="popular">
+      <div class="switch justify-content-between align-items-center">
+        <h1 class="ms-3">What's Popular</h1>
+        <div class="form-box">
+          <div class="popular-button-box">
+            <div id="popularBtn"></div>
+            <button type="button" class="toggle-btn" onclick="popularMovie()">Movie</button>
+            <button type="button" class="toggle-btn" onclick="popularTv()">TV</button>
+          </div>
+        </div>
+      </div>
+      <div id="popularCarousel" class="carousel">
+        <div id="popularCarouselCard" class="carousel-inner">
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#popularCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#popularCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!--popular carousel end-->
+
+    <!--topRated carousel start-->
+    <div id="topRated">
+      <div class="switch justify-content-between align-items-center">
+        <h1 class="ms-3">Top Rated</h1>
+        <div class="form-box">
+          <div class="topRated-button-box">
+            <div id="topRatedBtn"></div>
+            <button type="button" class="toggle-btn" onclick="topRatedMovie()">Movie</button>
+            <button type="button" class="toggle-btn" onclick="topRatedTv()">TV</button>
+          </div>
+        </div>
+      </div>
+      <div id="topRatedCarousel" class="carousel">
+        <div id="topRatedCarouselCard" class="carousel-inner">
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#topRatedCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!--topRated carousel end-->
+  </div>
+
+  <div class="row row-gap-5 justify-content-evenly " id="movieList">
+  </div>
+
+  <!-- footer start -->
+  <div class="footer bg-secondary">
+    <div class="footer-container ">
+      <div class="socialIcons">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <div class="footerNavbar">
+        <ul class="footerList">
+          <li><a href="" class="text-decoration-none">Home</a></li>
+          <li><a href="" class="text-decoration-none">About</a></li>
+          <li><a href="" class="text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footerBottom">
+        <p>Copyright &copy;2023 ; designed by GetFlix</p>
+      </div>
+  
+    </div>
+  </div>
+  <!-- footer end -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="main.js"></script>
+
+</html>
